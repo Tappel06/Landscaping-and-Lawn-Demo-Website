@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenHorizon | Premium Landscaping & Yard Care</title>
+    <style>
+        /* CSS Variables for a Rich, Earthy Theme */
+        :root {
+            --primary: #166534; /* Deep Forest Green */
+            --primary-light: #22c55e;
+            --accent: #d97706; /* Earthy Amber */
+            --dark: #18181b;
+            --light-bg: #f4f4f5;
+            --white: #ffffff;
+            --text-muted: #52525b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Top Promo Banner */
+        .promo-banner {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Navigation */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            backdrop-filter: blur(5px);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-decoration: none;
+            color: var(--dark);
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span { color: var(--primary-light); }
+
+        .btn {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn:hover { background-color: var(--dark); }
+
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            background: linear-gradient(rgba(24, 24, 27, 0.7), rgba(24, 24, 27, 0.4)), 
+                        url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+        }
+
+        .hero-content { max-width: 650px; color: var(--white); }
+        .hero h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero p { font-size: 1.25rem; margin-bottom: 2rem; color: #e4e4e7; border-left: 4px solid var(--primary-light); padding-left: 1rem; }
+
+        /* General Section Layout */
+        .section-pad { padding: 6rem 5%; }
+        .text-center { text-align: center; }
+        .section-title { font-size: 2.8rem; margin-bottom: 1rem; color: var(--dark); }
+        .section-subtitle { color: var(--text-muted); margin-bottom: 4rem; font-size: 1.1rem; max-width: 700px; margin-inline: auto; }
+
+        /* Services Grid */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 4px solid transparent;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--primary-light);
+        }
+
+        .service-card h3 { font-size: 1.4rem; margin-bottom: 1rem; }
+        .service-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+        /* Working Process Section */
+        .process-section { background-color: var(--dark); color: var(--white); }
+        .process-section .section-title { color: var(--white); }
+        .process-grid { display: flex; gap: 2rem; justify-content: space-between; flex-wrap: wrap; }
+        .process-step { flex: 1; min-width: 250px; text-align: center; }
+        .step-number { 
+            width: 60px; height: 60px; background: var(--primary-light); color: var(--dark); 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            font-size: 1.5rem; font-weight: bold; margin: 0 auto 1.5rem; 
+        }
+
+        /* Project Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item::after {
+            content: 'View Project';
+            position: absolute;
+            bottom: -50px; left: 0; width: 100%; padding: 1rem;
+            background: rgba(22, 101, 52, 0.9); color: white;
+            text-align: center; font-weight: bold;
+            transition: bottom 0.3s;
+        }
+        .gallery-item:hover::after { bottom: 0; }
+
+        /* Testimonials */
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .testimonial-card { background: var(--white); padding: 2rem; border-radius: 8px; border: 1px solid #e4e4e7; }
+        .stars { color: var(--accent); margin-bottom: 1rem; }
+
+        /* Quote Section */
+        .quote-section {
+            background-color: var(--light-bg);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .quote-form { background: var(--white); padding: 3rem; border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 0.8rem; border: 1px solid #d4d4d8; border-radius: 4px; font-family: inherit;
+        }
+
+        footer { background: #09090b; color: #a1a1aa; text-align: center; padding: 2rem; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .quote-section { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="promo-banner">
+        🌸 Mid-August Special: Spring is early! Book your seasonal yard recovery today and get 15% off.
+    </div>
+
+    <header>
+        <a href="#" class="logo">Green<span>Horizon</span></a>
+        <a href="#contact" class="btn">Get Free Estimate</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Breathe Life Back Into Your Property.</h1>
+            <p>We transform overgrown yards into pristine outdoor living spaces. Professional maintenance, hardscaping, and specialized garden installations.</p>
+            <a href="#contact" class="btn" style="padding: 1rem 2.5rem; font-size: 1.2rem;">Claim Your 15% Spring Discount</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section-pad">
+        <div class="text-center">
+            <h2 class="section-title">Complete Yard Solutions</h2>
+            <p class="section-subtitle">From cutting the grass to completely redesigning your backyard ecosystems.</p>
+        </div>
+        
+        <div class="grid-4">
+            <div class="service-card">
+                <h3>Routine Turf Care</h3>
+                <p>Precision mowing, edging, aeration, and seasonal fertilization to keep your lawn thick and vividly green.</p>
+                <strong style="color: var(--primary);">➔ Learn More</strong>
+            </div>
+            <div class="service-card">
+                <h3>Cleanups & Recovery</h3>
+                <p>Overgrown yard? We handle massive seasonal cleanups, weed eradication, and debris removal.</p>
+                <strong style="color: var(--primary);">➔ Learn More</strong>
+            </div>
+            <div class="service-card">
+                <h3>Hardscaping & Beds</h3>
+                <p>Installation of mulch, river rock, stepping stones, and complete flowerbed overhauls.</p>
+                <strong style="color: var(--primary);">➔ Learn More</strong>
+            </div>
+            <div class="service-card" style="background: var(--light-bg);">
+                <h3>Kitchen & Container Gardens</h3>
+                <p>Want to grow produce but lack space? We build high-density planter pot setups perfect for potatoes, carrots, onions, garlic, and spinach.</p>
+                <strong style="color: var(--primary);">➔ View Setups</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section-pad process-section">
+        <div class="text-center">
+            <h2 class="section-title">How We Work</h2>
+            <p class="section-subtitle" style="color: #a1a1aa;">No guesswork. Just a straightforward path to a better backyard.</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h3>Site Assessment</h3>
+                <p style="color: #a1a1aa; margin-top: 1rem;">We evaluate your soil, sunlight, and property layout to determine exactly what your yard needs.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h3>Transparent Quoting</h3>
+                <p style="color: #a1a1aa; margin-top: 1rem;">You receive a flat-rate, itemized proposal. No hidden fees or surprise charges.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h3>Execution & Upkeep</h3>
+                <p style="color: #a1a1aa; margin-top: 1rem;">Our uniformed crew completes the job on time, and we set up a maintenance schedule if desired.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Gallery -->
+    <section class="section-pad">
+        <div class="text-center">
+            <h2 class="section-title">Recent Transformations</h2>
+            <p class="section-subtitle">A glimpse at the properties we've elevated this season.</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1584622781564-1d987f7333c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+            <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1558904541-efa844a84d01?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+            <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section-pad" style="background-color: var(--white);">
+        <div class="text-center">
+            <h2 class="section-title">What the Neighborhood Says</h2>
+        </div>
+        <div class="testimonial-grid" style="margin-top: 3rem;">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"They completely recovered our front lawn after the winter frost. The crew was fast, polite, and left no mess behind. Highly recommend."</p>
+                <strong style="display: block; margin-top: 1rem;">- Sarah M.</strong>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"I had them set up some custom planter boxes for my vegetables since my soil is terrible. The garlic and spinach are thriving!"</p>
+                <strong style="display: block; margin-top: 1rem;">- David L.</strong>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Reliable and fairly priced. They've been handling my weekly mowing and edging for six months and never missed a day."</p>
+                <strong style="display: block; margin-top: 1rem;">- Johan V.</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section id="contact" class="section-pad quote-section">
+        <div>
+            <h2 class="section-title">Request Your Estimate</h2>
+            <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem;">Ready to upgrade your curb appeal? Fill out the form, and we'll be in touch within 24 hours.</p>
+            <ul style="list-style: none; line-height: 2;">
+                <li>📍 <strong>Service Area:</strong> Kempton Park, Midstream, Bedfordview</li>
+                <li>📞 <strong>Direct Line:</strong> 082 555 0199</li>
+                <li>✉️ <strong>Email:</strong> crew@greenhorizon.co.za</li>
+            </ul>
+        </div>
+
+        <div class="quote-form">
+            <form action="https://formspree.io/f/your_form_id" method="POST">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone / WhatsApp</label>
+                    <input type="tel" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label>Primary Interest</label>
+                    <select name="service">
+                        <option value="Maintenance">Routine Lawn Maintenance</option>
+                        <option value="Cleanup">Seasonal Cleanup / Recovery</option>
+                        <option value="Custom Garden">Custom Planter Boxes / Veggie Gardens</option>
+                        <option value="Other">Other Landscaping Project</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Property Details</label>
+                    <textarea name="message" rows="4" placeholder="Briefly describe what you're looking for..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; font-size: 1.1rem;">Send Request</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>GreenHorizon Landscaping &copy; 2026. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
